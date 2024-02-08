@@ -16,7 +16,7 @@ class _SaladListPageState extends State<SaladListPage> {
   @override
   void initState() {
     super.initState();
-    // Dispatch the LoadSalads event when the screen is initialized
+
     context.read<SaladBloc>().add(LoadSalads());
   }
 
@@ -27,7 +27,6 @@ class _SaladListPageState extends State<SaladListPage> {
         title: const Text('Salad List'),
       ),
       body: BlocBuilder<SaladBloc, SaladState>(
-       
         builder: (context, state) {
           if (state is SaladLoadInProgress) {
             return const Center(
@@ -54,7 +53,7 @@ class _SaladListPageState extends State<SaladListPage> {
               child: Text('Failed to load salads'),
             );
           } else {
-            return Container(); // Placeholder, you can handle other states if needed
+            return Container();
           }
         },
       ),
@@ -66,24 +65,19 @@ class _SaladListPageState extends State<SaladListPage> {
             children: [
               IconButton(
                 icon: const Icon(Icons.shopping_cart),
-                onPressed: () {
-                  // Navigate to cart page
-                },
+                onPressed: () {},
               ),
               BlocBuilder<SaladBloc, SaladState>(
-                
                 builder: (context, state) {
                   if (state is SaladLoadSuccess) {
                     return Text('Total Items: ${state.totalItems}');
-                  } else{
+                  } else {
                     return const SizedBox.shrink();
                   }
                 },
               ),
               ElevatedButton(
-                onPressed: () {
-                  // Place order logic
-                },
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),

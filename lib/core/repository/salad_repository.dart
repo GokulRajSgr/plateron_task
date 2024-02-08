@@ -1,5 +1,4 @@
-// lib/core/repository/salad_repository.dart
-import '../models/salad.dart';
+import 'package:plateron_task/core/models/salad.dart';
 
 abstract class SaladRepository {
   Future<List<Salad>> getSalads();
